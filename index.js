@@ -22,7 +22,7 @@ import Authencation from './src/common/Authencation'
 import routers from './src/server'
 app.use(cors())
 app.use(Authencation)
-// app.use('/api', routers)
+app.use('/api', routers)
 app.use('/', (req, res) => {
     res.send('hello world')
 })
