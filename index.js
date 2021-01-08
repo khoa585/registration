@@ -3,6 +3,7 @@ const express = require('express')
 const app = express()
 const bodyParser = require('body-parser')
 app.use(bodyParser.json())
+
 let cors = require('cors')
 let mongoose = require("mongoose");
 try {
@@ -18,10 +19,10 @@ try {
 }
 app.use(bodyParser.urlencoded({ extended: true }))
 import Authencation from './src/common/Authencation'
+import routers from './src/server'
 app.use(cors())
 app.use(Authencation)
-import router from './src/Server/index'
-app.use('/api', router)
+// app.use('/api', routers)
 app.use('/', (req, res) => {
     res.send('hello world')
 })
