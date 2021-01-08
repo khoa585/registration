@@ -18,9 +18,9 @@ try {
 }
 app.use(bodyParser.urlencoded({ extended: true }))
 import Authencation from './src/common/Authencation'
-import router from './src/Server/index'
 app.use(cors())
 app.use(Authencation)
+import router from './src/Server/index'
 app.use('/api', router)
 app.use('/', (req, res) => {
     res.send('hello world')
