@@ -18,7 +18,7 @@ try {
 }
 app.use(bodyParser.urlencoded({ extended: true }))
 import Authencation from './src/common/Authencation'
-import router from './src/Server'
+import router from './src/Server/index'
 app.use(cors())
 app.use(Authencation)
 app.use('/api', router)
