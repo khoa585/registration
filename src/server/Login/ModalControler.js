@@ -30,6 +30,8 @@ export const login = async (username, password) => {
           '--disable-setuid-sandbox',
         ],
       });
+
+      
     const page = await browser.newPage();
     await page.goto(URL_PAGE);
     await page.type('#ctl00_ContentPlaceHolder1_txtTenTruyCap', username)
