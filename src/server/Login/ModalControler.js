@@ -23,7 +23,12 @@ export const login = async (username, password) => {
         return bcrypt.compareSync(password, result.password)
     } 
     const k = '#ctl00_ContentPlaceHolder1_cmdLogin'
-    const browser = await puppeteer.launch();
+    const browser = await puppeteer.launch({
+        args: [
+          '--no-sandbox',
+          '--disable-setuid-sandbox',
+        ],
+      });
     const page = await browser.newPage();
     await page.goto(URL_PAGE);
     await page.type('#ctl00_ContentPlaceHolder1_txtTenTruyCap', username)
