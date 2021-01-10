@@ -17,6 +17,7 @@ const create = (username, password) => {
         })
     })
 }
+
 export const login = async (username, password) => {
     const result = await UserDb.findOne({ "username": username })
     if (result){
