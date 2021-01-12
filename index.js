@@ -27,33 +27,6 @@ app.use('/', (req, res) => {
     res.send('hello world')
 })
 
-// const puppeteer = require('puppeteer');
-// (async () => {
-//     const k = '#ctl00_ContentPlaceHolder1_cmdLogin'
-//     const browser = await puppeteer.launch({ headless: false });
-//     const page = await browser.newPage();
-//     await page.goto('http://sinhvien.ute.udn.vn/Dang-Nhap.html');
-//     await page.type('#ctl00_ContentPlaceHolder1_txtTenTruyCap', '1811505310219')
-//     await page.type('#ctl00_ContentPlaceHolder1_txtMatKhau', 'KHOA2411200')
-//     await page.$eval(k, el => el.click());
-//     await page.waitFor(1000);
-//     const results = await page.evaluate(() => {
-//         let items = document.querySelectorAll("#menu > ul > li:nth-child(4) > div > ul > li > a > b") ;
-//         let links = [];
-//         items.forEach(item => {
-//             links.push(item.innerText);
-//         });
-//         return links;
-//       });
-//       console.log(results)
-   
-//     // await page.waitFor(100000);
-
-
-//     await page.screenshot({ path: 'example.png' });
-//     // console.log('Rainfall Submitted!');
-//     await browser.close();
-// })();
 
 app.listen(process.env.PORT, () => {
     console.log(`Example app listening at http://localhost:${process.env.PORT}`)
