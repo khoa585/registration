@@ -1,16 +1,13 @@
 const express = require('express')
 const router = express.Router()
-import { login, getHistory,getGeneralInformation ,getLibrary,getNewPost,getInforuser} from './ModalControler'
+let cheerio = require("cheerio");
+import { login, getHistory, getGeneralInformation, getLibrary, getNewPost, getInforuser, getDetail } from './ModalControler'
 import responeHelper from '../../common/responeHelper'
 router.post("/login", async (req, res) => {
-    // const {username,password} = req.body
-    const result = await login()
-    console.log(result)
-    if (result) {
-        responeHelper(req, res, null, true)
-    } else {
-        responeHelper(req, res, false, null)
-    }
+    const { username, password } = req.body
+    console.log(username, password )
+    await login(req, res, username, password)
+
 });
 router.get('/getHistory', async (req, res) => {
     const result = await getHistory()
@@ -29,6 +26,8 @@ router.get('/getGeneralInformationT', async (req, res) => {
         responeHelper(req, res, false, null)
     }
 })
+
+
 router.get('/getGeneralInformationBQT', async (req, res) => {
     const url = "http://sinhvien.ute.udn.vn/ChuyenDe/1/Thong-tin-tu-BQT_7.html"
     const result = await getGeneralInformation(url)
@@ -38,6 +37,7 @@ router.get('/getGeneralInformationBQT', async (req, res) => {
         responeHelper(req, res, false, null)
     }
 })
+
 router.get('/getLibrary', async (req, res) => {
     const url = "http://sinhvien.ute.udn.vn/ChuyenDe/Thu-vien-tai-lieu_16.html"
     const result = await getLibrary(url)
@@ -62,6 +62,17 @@ router.get('/getNewPost', async (req, res) => {
 
 router.get('/getInforuser', async (req, res) => {
     const result = await getInforuser()
+    console.log(result)
+    if (result) {
+        responeHelper(req, res, null, result)
+    } else {
+        responeHelper(req, res, false, null)
+    }
+})
+
+router.post('/getDetail', async (req, res) => {
+    const { uri } = req.body
+    const result = await getDetail(uri)
     console.log(result)
     if (result) {
         responeHelper(req, res, null, result)
