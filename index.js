@@ -5,7 +5,9 @@ const bodyParser = require('body-parser')
 app.use(bodyParser.json())
 
 let cors = require('cors')
+let {JWTauthen} = require('./src/middleware/JWTauthen');
 let mongoose = require("mongoose");
+app.use(JWTauthen)
 try {
     mongoose.connect("mongodb+srv://hoduykhoa:titikakatika2207n@cluster0.lodmh.mongodb.net/school?retryWrites=true&w=majority", { useNewUrlParser: true, useUnifiedTopology: true }, (error) => {
         if (error) {

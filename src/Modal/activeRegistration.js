@@ -3,13 +3,10 @@ let Schema = mongoose.Schema;
 let activeRegistration = new Schema(
   {
     IdHoatDong: {
-        type: Schema.Types.String,
+        type: Schema.Types.ObjectId,
         ref: "DTNHoatDong",  
     },
-    MaSinhVien: {
-        type: Schema.Types.String,
-        ref: "ChiTietThanhVien",  
-    },
+    MaSinhVien:String,
     TrangThai: String,
   },
   { timestamps: true }

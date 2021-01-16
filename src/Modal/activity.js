@@ -6,6 +6,7 @@ let activity = new Schema(
     SoLuongThamGia: String,
     SoDiemTichLuy: String,
     TrangThai: String,
+    ThoigianTochuc: Date,
   },
   { timestamps: true }
 );

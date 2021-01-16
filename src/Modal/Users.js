@@ -4,10 +4,16 @@ let Users = new Schema(
   {
     MaSinhVien: String,
     HoTen: String,
-    Ho: String,
-    Ten: String,
     MatKhau: String,
     quyenHan: String,
+    tokens: [{
+      type: String,
+      required: false
+    }],
+    IdUsers: {
+      type: Schema.Types.ObjectId,
+      ref: "SinhVien",  
+  },
   },
   { timestamps: true }
 );
