@@ -190,4 +190,5 @@ router.get('/getListActivi', async (req, res) => {
     }
 })
 
+
 export default router
