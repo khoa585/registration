@@ -10,7 +10,8 @@ import {
     UpdateInforMember,
     getActivityBy,
     getAllActivity,
-    getInformember
+    getInformember,
+    getListActivi
 } from './Modal'
 import responeHelper from '../../common/responeHelper'
 import { checkLogin } from './user'
@@ -180,5 +181,13 @@ router.post('/login', async (req, res) => {
     }
 })
 
+router.get('/getListActivi', async (req, res) => {
+    let result = await getListActivi();
+    if (result) {
+        return responeHelper(req, res, null,result);
+    } else {
+        return responeHelper(req, res, "ErrorEC.LOGIN_FAIL", null);
+    }
+})
 
 export default router

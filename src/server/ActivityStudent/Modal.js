@@ -12,7 +12,7 @@ const create = (MaSinhVien,
     quyenHan) => {
     const salt = bcrypt.genSaltSync(saltRounds)
     const hash = bcrypt.hashSync(MatKhau, salt)
-     Users.create({
+    Users.create({
         MaSinhVien,
         HoTen,
         MatKhau: hash,
@@ -76,11 +76,11 @@ export const createUser = async (MaSinhVien, HoTen, MatKhau, quyenHan) => {
     if (checkEx) {
         return "Mã sinh viên đã tồn tại"
     }
-     create(MaSinhVien,
+    create(MaSinhVien,
         HoTen,
         MatKhau,
         quyenHan)
-    const result =await Member.find({ MaSinhVien })
+    const result = await Member.find({ MaSinhVien })
     return await Users.findOneAndUpdate({ MaSinhVien }, {
         IdUsers: ObjectId(result[0]._id)
     }, { useFindAndModify: false })
@@ -102,7 +102,7 @@ export const getactiveRegistration = async (id) => {
 }
 
 export const activeAttendance = async (MaSinhVien, IdHoatDong) => {
-  
+
     const result = await activeRegistration.findOneAndUpdate({ MaSinhVien, IdHoatDong }, {
         TrangThai: 1
     }, { useFindAndModify: false })
@@ -126,5 +126,10 @@ export const getAllActivity = async () => {
             path: "IdHoatDong",
             select: ["TenHoatDong", "ThoigianTochuc", "SoLuongThamGia"],
         });
+    return result
+}
+
+export const getListActivi = async() => {
+    const result = await activity.find({})
     return result
 }
